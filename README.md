@@ -12,8 +12,8 @@
 * Lab_10: Write a program to encrypt the plaintext message using RSA algorithm. Then perform the reverse operation to get the original plaintext. The plaintext can be integer number of string type data. The string data must be converted to ASCII  before encryption.
 * Lab_11: Write a program to implement Diffie-Hellman Key Exchange.
 * Lab_12: Write a program to implement the following services of PGP. You have to follow all the steps mentioned in the algorithms.
-** Authentication
-** Confidentiality for transmitting data.
+a. Authentication
+b. Confidentiality for transmitting data.
 
 
 
