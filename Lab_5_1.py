@@ -8,8 +8,8 @@ def otp_encrypt(text,key):
     if len(key)<len(text):
         raise ValueError("Key length must be as long as a plaintext.")
     ciphertext=[]
-    for t,k in zip(text,key):
-        c=(ord(t)-65+ord(k)-65)%26
+    for p,k in zip(text,key):
+        c=(ord(p)-65+ord(k)-65)%26
         ciphertext.append(chr(c+65))
     return ''.join(ciphertext)
 
@@ -18,21 +18,24 @@ def otp_decrypt(ciphertext,key):
     key=normalize(key)
     if len(key)<len(ciphertext):
         raise ValueError("Key length must be as long as a plaintext.")
-    plaintext=[]
+    text=[]
     for c,k in zip(ciphertext,key):
         p=(ord(c)-65-(ord(k)-65))%26
-        plaintext.append(chr(p+65))
-    return ''.join(plaintext)
+        text.append(chr(p+65))
+    return ''.join(text)
 
 if __name__=="__main__":
-    plaintext = "DEPARTMENT OF COMPUTER SCIENCE AND TECHNOLY UNIVERSITY OF RAJSHAHI BANGLADESH"
-    with open("lab_5_key.txt", "r") as f:
-        key = f.read().strip()
-    ciphertext = otp_encrypt(plaintext, key)
-    with open("lab_5_ciphertext.txt", "w") as f:
+    with open('lab_5_input.txt','r') as f:
+        plaintext=f.read().strip()
+    with open('lab_5_key.txt','r') as f:
+        key=f.read().strip()
+
+    ciphertext=otp_encrypt(plaintext,key)
+    with open('lab_5_ciphertext.txt','w') as f:
         f.write(ciphertext)
-    print("Ciphertext saved in lab_5_ciphertext.txt")
-    decrypted = otp_decrypt(ciphertext, key)
-    with open("lab_5_decrypted.txt", "w") as f:
-        f.write(decrypted)
-    print("Decrypted plaintext saved in lab_5_decrypted.txt")
+    print("Ciphertext save in lab_5_ciphertext.txt")
+
+    decrypt=otp_decrypt(ciphertext,key)
+    with open('lab_5_output.txt','w') as f:
+        f.write(decrypt)
+    print("Output save in lab_5_ciphertext.txt")
