@@ -1,4 +1,5 @@
 import re
+import os
 def normalize(text):
     return re.sub('[^A-Z]','',text.upper())
 

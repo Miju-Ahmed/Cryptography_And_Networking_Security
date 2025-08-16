@@ -30,6 +30,10 @@ if __name__=="__main__":
     with open('lab_5_key.txt','r') as f:
         key=f.read().strip()
 
+    norm_plain=normalize(plaintext)
+    key_to_use=key[:len(norm_plain)]
+    remainin_key=key[len(norm_plain):]
+
     ciphertext=otp_encrypt(plaintext,key)
     with open('lab_5_ciphertext.txt','w') as f:
         f.write(ciphertext)
@@ -38,4 +42,8 @@ if __name__=="__main__":
     decrypt=otp_decrypt(ciphertext,key)
     with open('lab_5_output.txt','w') as f:
         f.write(decrypt)
-    print("Output save in lab_5_ciphertext.txt")
+    print("Output save in lab_5_output.txt")
+
+    with open('lab_5_key.txt','w') as f:
+        f.write(remainin_key)
+    print("Remaining key save in lab_5_key.txt")
