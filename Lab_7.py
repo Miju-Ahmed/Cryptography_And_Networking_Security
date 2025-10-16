@@ -26,7 +26,7 @@ def Robin_Miller_prime_test(p,k):
     return True
 
 if __name__=="__main__":
-    P=475834758473
+    P=53
     k=10
     c=Robin_Miller_prime_test(P,k)
     if c:
